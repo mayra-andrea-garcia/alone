@@ -1,13 +1,18 @@
 <?php
+<<<<<<< HEAD
 /** 
 *Modelo Vehiculo
 *@author Mayra Garcia
 *@version 1.0
 */
+=======
+
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 class ModeloVehiculo
 {
 
 	public $datos;
+<<<<<<< HEAD
 	public $manejadorBD;
 
 	function __construct()
@@ -18,6 +23,11 @@ class ModeloVehiculo
 
 
 	function crear($vin,$marca,$tipo,$modelo,$fecha,$dia,$numEmpleado)
+=======
+
+
+	function crear($vin,$marca,$tipo,$modelo)
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 	{
 	/**
 	*Funcion que agrega en la Base de Datos
@@ -27,6 +37,7 @@ class ModeloVehiculo
 	*@param $modelo string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
 		$vin = $this->manejadorBD->escaparVariable($vin);
 		$marca = $this->manejadorBD->escaparVariable($marca);
 		$tipo = $this->manejadorBD->escaparVariable($tipo);
@@ -39,6 +50,12 @@ class ModeloVehiculo
 		$select = "SELECT * FROM Vehiculo WHERE vin=$vin;";
 		$this->datos = $this->manejadorBD->insertar($query, $select);
 
+=======
+		$this->datos = array('vin'=>$vin,
+						     'marca'=>$marca,
+						     'tipo'=>$tipo,
+						     'modelo'=>$modelo);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		return $this->datos;
 	}
 
@@ -49,6 +66,7 @@ class ModeloVehiculo
 	*@param $vin string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
 		$vin = $this->manejadorBD->escaparVariable($vin);
 
 		$query = "SELECT * FROM Vehiculo WHERE vin='$vin';";
@@ -85,6 +103,12 @@ class ModeloVehiculo
 		//$query = "SELECT * FROM Vehiculo WHERE fecha='$fecha';";
 		//$this->datos = $this->manejadorBD->listar($query);
 		$this->datos = array('fechaFinal' => $fechaFinal);
+=======
+		$this->datos = array('vin'=>$vin,
+						     'marca'=>'VariableMarcaBD',
+						     'tipo'=>'VariableTipoBD',
+						     'modelo'=>'VariableModeloBD');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		return $this->datos;
 	}
 
@@ -97,6 +121,7 @@ class ModeloVehiculo
 	*@param $Ntipo string
 	*@param $Nmodelo string
 	*@return $datos array
+<<<<<<< HEAD
 	*/
 		$vin = $this->manejadorBD->escaparVariable($vin);
 		$Nmarca = $this->manejadorBD->escaparVariable($Nmarca);
@@ -106,6 +131,13 @@ class ModeloVehiculo
 		$query = "UPDATE Vehiculo SET marca = '$Nmarca', tipo = '$Ntipo', modelo = '$Nmodelo' WHERE vin = $vin";
 		$select = "SELECT * FROM Vehiculo WHERE vin = $vin;";
 		$this->datos = $this->manejadorBD->modificar($query, $select);
+=======
+	**/
+		$this->datos = array('vin'=>$vin,
+						     'marca'=>$Nmarca,
+						     'tipo'=>$Ntipo,
+						     'modelo'=>$Nmodelo);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		return $this->datos;
 	}
 
@@ -117,6 +149,7 @@ class ModeloVehiculo
 	*@param $vin string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
 		$vin = $this->manejadorBD->escaparVariable($vin);
 
 		$query = "DELETE Vehiculo,Ubicacion from Vehiculo
@@ -125,6 +158,12 @@ class ModeloVehiculo
 		//$query = "DELETE FROM Vehiculo WHERE vin='$vin';";
 		$this->datos = $this->manejadorBD->eliminar($query);
 
+=======
+		$this->datos = array('vin'=>'NULL',
+							 'marca'=>'NULL',
+							 'tipo'=>'NULL',
+							 'modelo'=>'NULL');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		return $this->datos;
 	}
 }

@@ -21,11 +21,19 @@ class ControladorInventario
 		*@param string
 		*@throws No se generan excepciones
 		*/
+<<<<<<< HEAD
 		require_once('Modelo/ModeloUsuario.php');
 		require_once('Modelo/ModeloInventario.php');
 		require_once('Modelo/ModeloVehiculo.php');
 		require_once('Modelo/ModeloUbicacion.php');
 		require_once('Controlador/SanitizadorDatos.php');
+=======
+		require('Modelo/ModeloUsuario.php');
+		require('Modelo/ModeloInventario.php');
+		require('Modelo/ModeloVehiculo.php');
+		require('Modelo/ModeloUbicacion.php');
+		require('Controlador/SanitizadorDatos.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		$this->modelo = new ModeloInventario();
 		$this->modeloUsuario = new ModeloUsuario();
 		$this->modeloVehiculo = new ModeloVehiculo();
@@ -163,7 +171,11 @@ class ControladorInventario
 		   isset($resultUsuario))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/ListaInventario.php');
+=======
+			require('Vista/ListaInventario.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		}
 		else
 		{
@@ -186,9 +198,14 @@ class ControladorInventario
 		$golpe = SanitizadorDatos::validaTexto($_POST['golpe']);
 		$severidad = SanitizadorDatos::validaTexto($_POST['severidad']);
 		$piezaGolpeada = SanitizadorDatos::validaTexto($_POST['piezaGolpeada']);
+<<<<<<< HEAD
 		$numEmpleado = SanitizadorDatos::validaNumero($_POST['numEmpleado']);
 
 		$result = $this->modelo->agregar($numEmpleado,$vin, $kilometraje, 
+=======
+
+		$result = $this->modelo->agregar($vin, $kilometraje, 
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 										 $combustible, $golpe, 
 										 $severidad, $piezaGolpeada);
 
@@ -196,7 +213,11 @@ class ControladorInventario
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/AgregarInventario.php');
+=======
+			require('Vista/AgregarInventario.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		}
 		else
 		{
@@ -219,17 +240,28 @@ class ControladorInventario
 		$golpe = SanitizadorDatos::validaTexto($_POST['golpe']);
 		$severidad = SanitizadorDatos::validaTexto($_POST['severidad']);
 		$piezaGolpeada = SanitizadorDatos::validaTexto($_POST['piezaGolpeada']);
+<<<<<<< HEAD
 		$numEmpleado = SanitizadorDatos::validaNumero($_POST['numEmpleado']);
 		
 		$result = $this->modelo->modificar($vin, $kilometraje,  
 		               					   $combustible, $golpe,
 		               					   $severidad, $piezaGolpeada,$numEmpleado);
+=======
+		
+		$result = $this->modelo->modificar($vin, $kilometraje,  
+		               					   $combustible, $golpe,
+		               					   $severidad, $piezaGolpeada);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 
 		//Revisa si se realizo la modificacion
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/ModificaInventario.php');
+=======
+			require('Vista/ModificaInventario.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		}
 		else
 		{
@@ -254,7 +286,11 @@ class ControladorInventario
 		if(isset($result))
 		{
 			///carga la vista
+<<<<<<< HEAD
 			require_once('Vista/EliminaInventario.php');
+=======
+			require('Vista/EliminaInventario.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		}
 		else
 		{

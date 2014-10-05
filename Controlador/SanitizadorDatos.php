@@ -6,6 +6,10 @@
 */
 class SanitizadorDatos
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 	static function validaCorreo($correo)
 	{
 		/**
@@ -32,7 +36,11 @@ class SanitizadorDatos
 		*@param $numeroAValidar String
 		*@return $numeroSanitizado String
 		*/
+<<<<<<< HEAD
 		$aceptados = "/^([a-zA-Z0-9\s._-])*$/";
+=======
+		$aceptados = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*$/";
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		if(isset($texto) && (preg_match($aceptados, $texto)))
 		{
 			return $texto; 
@@ -54,8 +62,13 @@ class SanitizadorDatos
 		*@param $numeroAValidar String
 		*@return $numeroSanitizado String
 		*/
+<<<<<<< HEAD
 		$texto = "/^([a-zA-Z0-9\s._-])*$/"; /*'0123456789 #a..zA..Z'*/
 		if(isset($direccion) && (preg_match($texto, $direccion))/*(strlen($direccion) == strspn($direccion, $texto))*/)
+=======
+		$texto = '0123456789 #a..zA..Z';
+		if(isset($direccion) && (strlen($direccion) == strspn($direccion, $texto)))
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		{
 		 	return $direccion;
 		}
@@ -127,6 +140,7 @@ class SanitizadorDatos
 			print '<br/>';
 		}
 	} 
+<<<<<<< HEAD
 
 	static function cadenaVacia($dato)
 	{
@@ -169,6 +183,8 @@ class SanitizadorDatos
 		}
 	}
 
+=======
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 }
 
 ?>

@@ -5,11 +5,14 @@ class ModeloUbicacion
 
 	public $datos;
 
+<<<<<<< HEAD
 	function __construct()
 	{
 		require_once("SingletonBD.php");
 		$this->manejadorBD = SingletonBD::singleton();
 	}
+=======
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 
 	function listar($vin)
 	{
@@ -18,11 +21,17 @@ class ModeloUbicacion
 	*@param $vin string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
 		$vin = $this->manejadorBD->escaparVariable($vin);
 
 		$query = "SELECT * FROM Ubicacion WHERE vin='$vin';";
 		$this->datos = $this->manejadorBD->listar($query);
 	
+=======
+		$this->datos = array('vin'=>$vin,
+							 'ubicacion'=>'VariableUbicacionBD',
+							 'subUbicacion'=>'VariableSubUbicacionBD');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		return $this->datos;
 	}
 
@@ -35,6 +44,7 @@ class ModeloUbicacion
 	*@param $subUbicaicon string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
 		$vin = $this->manejadorBD->escaparVariable($vin);
 		$ubicacion = $this->manejadorBD->escaparVariable($ubicacion);
 		$subUbicacion = $this->manejadorBD->escaparVariable($subUbicacion);
@@ -43,6 +53,11 @@ class ModeloUbicacion
 		$select = "SELECT * FROM Ubicacion WHERE vin = '$vin';";
 		$this->datos = $this->manejadorBD->insertar($query, $select);
 
+=======
+		$this->datos = array('vin'=>$vin,
+						     'ubicacion'=>$ubicacion,
+							 'subUbicacion'=>$subUbicacion);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		return $this->datos;
 	}
 
@@ -56,6 +71,7 @@ class ModeloUbicacion
 	*@param $NsubUbicaicon string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
 		$vin = $this->manejadorBD->escaparVariable($vin);
 		$Nubicacion = $this->manejadorBD->escaparVariable($Nubicacion);
 		$NsubUbicaicon = $this->manejadorBD->escaparVariable($NsubUbicaicon);
@@ -64,6 +80,11 @@ class ModeloUbicacion
 		          WHERE vin = $vin";
 		$select = "SELECT * FROM  WHERE vin = $vin;";
 		$this->datos = $this->manejadorBD->modificar($query, $select);
+=======
+		$this->datos = array('vin'=>$vin,
+							 'ubicacion'=>$Nubicacion,
+							 'subUbicacion'=>$NsubUbicacion);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		return $this->datos;
 	}
 
@@ -75,11 +96,17 @@ class ModeloUbicacion
 	*@param $vin string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
 		$vin = $this->manejadorBD->escaparVariable($vin);
 
 		$query = "DELETE FROM Ubicacion WHERE vin='$vin';";
 		$this->datos = $this->manejadorBD->eliminar($query);
 
+=======
+		$this->datos = array('vin'=>'NULL',
+							 'ubicacion'=>'NULL',
+							 'subUbicacion'=>'NULL');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
 		return $this->datos;
 	}
 }
