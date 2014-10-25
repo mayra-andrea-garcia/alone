@@ -124,7 +124,11 @@ class SingletonBD
    	*@param $query string
    	*@return $datos array
    	*/
+<<<<<<< HEAD
    	$objectoMysqli = $this->manejadorBD->query($query);
+=======
+   		$objectoMysqli = $this->manejadorBD->query($query);
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		if($this->manejadorBD->error)
 		{
 			print 'ERROR: EL QUERY AL LISTAR FALLO';

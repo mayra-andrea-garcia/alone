@@ -16,9 +16,19 @@ class ControladorVehiculo
 		*@param No recibe
 		*@throws No se generan excepciones
 		*/
+<<<<<<< HEAD
 		require_once('Controlador/ValidadorSesion.php');
 		require_once('Modelo/ModeloVehiculo.php');
 		require_once('Controlador/SanitizadorDatos.php');
+=======
+<<<<<<< HEAD
+		require_once('Modelo/ModeloVehiculo.php');
+		require_once('Controlador/SanitizadorDatos.php');
+=======
+		require('Modelo/ModeloVehiculo.php');
+		require('Controlador/SanitizadorDatos.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$this->modelo = new ModeloVehiculo();
 	}
 
@@ -49,6 +59,7 @@ class ControladorVehiculo
 		*@param No contiene
 		*@return No retorna valor
 		*@throws No lleva excepciones
+<<<<<<< HEAD
 		*/	$act = $_GET['actividad'];
 			switch ($act) {
 				case 'crear':
@@ -146,35 +157,104 @@ class ControladorVehiculo
 					break;
 				default:
 					print 'Error: La activdad: '.$act.' no existe porfavor intente con otra';
+=======
+<<<<<<< HEAD
+		*/	$act = $_GET['actividad'];
+			switch ($act) {
+=======
+		*/
+			switch ($_GET['actividad']) {
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+				case 'crear':
+					$this->crear();
+					break;
+				case 'listar':
+					$this->listar();
+					break;
+				case 'eliminar':
+					$this->eliminar();
+					break;
+				case 'modificar':
+					$this->modificar();
+					break;
+<<<<<<< HEAD
+				case 'listarFecha':
+					 $this->listarFecha();
+					 break;
+				default:
+					print 'Error: La activdad: '.$act.' no existe porfavor intente con otra';
+=======
+				default:
+					echo 'Error: Esa actividad no existe';
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 					break;
 			}
 	}
 
+<<<<<<< HEAD
 	private function crear()
 	{
+=======
+<<<<<<< HEAD
+	private function crear()
+	{
+=======
+	private function crear(){
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		/**
 		*Crea un Vehiculo
 		*@param No contiene
 		*@return No retorna valor
 		*/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		date_default_timezone_set('America/Mexico_City');
 		$fecha = date('Y-m-d', $timestamp = time());
 		$dia = date('l', $timestamp);
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		//Se consiguen los valores desde POST y se Sanitizan
 		$vin = SanitizadorDatos::validaNumero($_POST['vin']);
 		$marca = SanitizadorDatos::validaTexto($_POST['marca']);
 		$tipo = SanitizadorDatos::validaTexto($_POST['tipo']);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$modelo = SanitizadorDatos::validaNumero($_POST['modelo']);
 		$numEmpleado = SanitizadorDatos::validaNumero($_POST['numEmpleado']);
 
 		$result = $this->modelo->crear($vin, $marca, $tipo, $modelo, $fecha, $dia, $numEmpleado);
+<<<<<<< HEAD
+=======
+=======
+		$modelo = SanitizadorDatos::validaM($_POST['modelo']);
+
+		$result = $this->modelo->crear($vin, $marca, $tipo, $modelo);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 
 		//Revisa si se creo el Vehiculo
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/CrearVehiculo.php');
+=======
+<<<<<<< HEAD
+			require_once('Vista/CrearVehiculo.php');
+=======
+			require('Vista/CrearVehiculo.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		}
 		else
 		{
@@ -191,6 +271,10 @@ class ControladorVehiculo
 		*/	
 		//Se consiguen los valores desde POST y se Sanitizan
 		$vin = SanitizadorDatos::validaNumero($_POST['vin']);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$band = SanitizadorDatos::cadenaVacia($vin);
 
 		if($band)
@@ -201,11 +285,27 @@ class ControladorVehiculo
 		{
 			unset($result);
 		}
+<<<<<<< HEAD
+=======
+=======
+
+		$result = $this->modelo->listar($vin);
+
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		///Revisa si se puede listar el vehiculo
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/ListaVehiculo.php');
+=======
+<<<<<<< HEAD
+			require_once('Vista/ListaVehiculo.php');
+=======
+			require('Vista/ListaVehiculo.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		}
 		else
 		{
@@ -227,14 +327,29 @@ class ControladorVehiculo
 		$Ntipo = SanitizadorDatos::validaTexto($_POST['tipo']);
 		$Nmodelo = SanitizadorDatos::validaNumero($_POST['modelo']);
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$result = $this->modelo->modificar($vin, $Nmarca, $Ntipo, $Nmodelo);
 
 		//Revisa si se realizo la modificacion
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/ModificaVehiculo.php');
+=======
+<<<<<<< HEAD
+			require_once('Vista/ModificaVehiculo.php');
+=======
+			require('Vista/ModificaVehiculo.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		}
 		else
 		{
@@ -259,7 +374,15 @@ class ControladorVehiculo
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/EliminaVehiculo.php');
+=======
+<<<<<<< HEAD
+			require_once('Vista/EliminaVehiculo.php');
+=======
+			require('Vista/EliminaVehiculo.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		}
 		else
 		{
@@ -267,6 +390,10 @@ class ControladorVehiculo
 		}
 	}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 	private function listarFecha()
 	{
 		/**
@@ -383,6 +510,11 @@ class ControladorVehiculo
 
 	}
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 }
 
 ?>

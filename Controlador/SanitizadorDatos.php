@@ -6,6 +6,13 @@
 */
 class SanitizadorDatos
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 	static function validaCorreo($correo)
 	{
 		/**
@@ -32,7 +39,15 @@ class SanitizadorDatos
 		*@param $numeroAValidar String
 		*@return $numeroSanitizado String
 		*/
+<<<<<<< HEAD
 		$aceptados = "/^([a-zA-Z0-9\s._-])*$/";
+=======
+<<<<<<< HEAD
+		$aceptados = "/^([a-zA-Z0-9\s._-])*$/";
+=======
+		$aceptados = "/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*$/";
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		if(isset($texto) && (preg_match($aceptados, $texto)))
 		{
 			return $texto; 
@@ -54,8 +69,18 @@ class SanitizadorDatos
 		*@param $numeroAValidar String
 		*@return $numeroSanitizado String
 		*/
+<<<<<<< HEAD
 		$texto = "/^([a-zA-Z0-9\s._-])*$/"; /*'0123456789 #a..zA..Z'*/
 		if(isset($direccion) && (preg_match($texto, $direccion))/*(strlen($direccion) == strspn($direccion, $texto))*/)
+=======
+<<<<<<< HEAD
+		$texto = "/^([a-zA-Z0-9\s._-])*$/"; /*'0123456789 #a..zA..Z'*/
+		if(isset($direccion) && (preg_match($texto, $direccion))/*(strlen($direccion) == strspn($direccion, $texto))*/)
+=======
+		$texto = '0123456789 #a..zA..Z';
+		if(isset($direccion) && (strlen($direccion) == strspn($direccion, $texto)))
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		{
 		 	return $direccion;
 		}
@@ -127,6 +152,10 @@ class SanitizadorDatos
 			print '<br/>';
 		}
 	} 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 
 	static function cadenaVacia($dato)
 	{
@@ -169,6 +198,11 @@ class SanitizadorDatos
 		}
 	}
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 }
 
 ?>

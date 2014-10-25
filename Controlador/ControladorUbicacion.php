@@ -17,9 +17,14 @@ class ControladorUbicacion
 		*@param No recibe
 		*@throws No se generan excepciones
 		*/
+<<<<<<< HEAD
 		require_once('Controlador/ValidadorSesion.php');
 		require_once('Modelo/ModeloUbicacion.php');
 		require_once('Controlador/SanitizadorDatos.php');
+=======
+		require('Modelo/ModeloUbicacion.php');
+		require('Controlador/SanitizadorDatos.php');
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$this->modelo = new ModeloUbicacion();
 	}
 
@@ -54,6 +59,7 @@ class ControladorUbicacion
 			switch ($_GET['actividad']) 
 			{
 				case 'listar':
+<<<<<<< HEAD
 					if(ValidadorSesion::estaLogueado())
 					{
 						if(ValidadorSesion::esAdmin()|| 
@@ -125,6 +131,18 @@ class ControladorUbicacion
 					{
 						require_once('Vista/Login.php');
 					}	
+=======
+					$this->listar();
+					break;
+				case 'eliminar':
+					$this->eliminar();
+					break;
+				case 'modificar':
+					$this->modificar();
+					break;
+				case 'agregar':
+					$this->agregar();
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 					break;
 				default:
 					echo 'Error: La actividad no existe';

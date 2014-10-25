@@ -4,6 +4,10 @@ class ModeloInventario
 {
 
 	public $datos;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 	public $manejadorBD;
 
 	function __construct()
@@ -14,6 +18,14 @@ class ModeloInventario
 
 	
 	function agregar($numEmpleado, $vin, $kilometraje, $combustible, $golpes, $severidad, $piezaGolpeada)
+<<<<<<< HEAD
+=======
+=======
+
+
+	function agregar($vin, $kilometraje, $combustible, $golpes, $severidad, $piezaGolpeada)
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 	{
 	/**
 	*Funcion que agrega en la Base de Datos
@@ -25,6 +37,10 @@ class ModeloInventario
 	*@param $piezaGolpeada String
 	*@return $datos array
 	**/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$vin = $this->manejadorBD->escaparVariable($vin);
 		$kilometraje = $this->manejadorBD->escaparVariable($kilometraje);
 		$combustible = $this->manejadorBD->escaparVariable($combustible);
@@ -38,6 +54,17 @@ class ModeloInventario
 		$select = "SELECT * FROM Inventario WHERE vin = '$vin' AND numEmpleado = $numEmpleado;";
 		$this->datos = $this->manejadorBD->insertar($query, $select);
 
+<<<<<<< HEAD
+=======
+=======
+		$this->datos = array('vin'=>$vin,
+							 'kilometraje'=>$kilometraje,
+						     'combustible'=>$combustible,
+						     'golpes'=>$golpes,
+						     'severidad'=>$severidad,
+						     'piezaGolpeada'=>$piezaGolpeada);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		return $this->datos;
 	}
 
@@ -49,18 +76,41 @@ class ModeloInventario
 	*@param $vin string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$vin = $this->manejadorBD->escaparVariable($vin);
 
 		$query = "SELECT * FROM Inventario INNER JOIN Vehiculo ON Inventario.vin = Vehiculo.vin 
 		          INNER JOIN Ubicacion ON Inventario.vin = Ubicacion.vin WHERE Inventario.vin='$vin';";
 		$this->datos = $this->manejadorBD->listar($query);
 	
+<<<<<<< HEAD
+=======
+=======
+		$this->datos = array('vin'=>$vin,
+							 'kilometraje'=>'VariableKilometrajeBD',
+							 'Combustible'=>'VariableCombustibleBD',
+							 'golpes'=>'VariableGolpesBD',
+							 'severidad'=>'VariableSeveridadBD',
+							 'piezaGolpeada'=>'VariablePiezaGolpeadaDB');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		return $this->datos;
 	}
 
 	function modificar($vin, $kilometraje, 
 		               $combustible, $golpe,
+<<<<<<< HEAD
 		               $severidad, $piezaGolpeada, $numEmpleado)
+=======
+<<<<<<< HEAD
+		               $severidad, $piezaGolpeada, $numEmpleado)
+=======
+		               $severidad, $piezaGolpeada)
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 	{
 	/**
 	*Funcion que modifica en la Base de Datos
@@ -73,6 +123,10 @@ class ModeloInventario
 	*@param $piezaGolpeada string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$vin = $this->manejadorBD->escaparVariable($vin);
 		$kilometraje = $this->manejadorBD->escaparVariable($kilometraje);
 		$combustible = $this->manejadorBD->escaparVariable($combustible);
@@ -88,6 +142,17 @@ class ModeloInventario
 		                                WHERE vin = $vin";
 		$select = "SELECT * FROM Inventario WHERE vin = $vin;";
 		$this->datos = $this->manejadorBD->modificar($query, $select);
+<<<<<<< HEAD
+=======
+=======
+		$this->datos = array('vin'=>$vin,
+							 'kilometraje'=>$kilometraje,
+							 'combustible'=>$combustible,
+							 'golpes'=>$golpe,
+							 'severidad'=>$severidad,
+							 'piezaGolpeada'=>$piezaGolpeada);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		return $this->datos;
 	}
 
@@ -99,6 +164,10 @@ class ModeloInventario
 	*@param $vin string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$vin = $this->manejadorBD->escaparVariable($vin);
 
 		$query = "DELETE FROM Inventario WHERE vin='$vin';";
@@ -106,6 +175,21 @@ class ModeloInventario
 
 		return $this->datos;
 	}	
+<<<<<<< HEAD
+=======
+=======
+		$this->datos = array('vin'=>'NULL',
+						    'kilometraje' =>'NULL',
+						    'combusitble'=>'NULL',
+						    'golpes'=>'NULL',
+						    'severidad'=>'NULL',
+						    'piezaGolpeada'=>'NULL');
+		return $this->datos;
+	}
+
+	
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 }
 
 ?>

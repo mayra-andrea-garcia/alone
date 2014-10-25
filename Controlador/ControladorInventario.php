@@ -21,12 +21,26 @@ class ControladorInventario
 		*@param string
 		*@throws No se generan excepciones
 		*/
+<<<<<<< HEAD
 		require_once('Controlador/ValidadorSesion.php');
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		require_once('Modelo/ModeloUsuario.php');
 		require_once('Modelo/ModeloInventario.php');
 		require_once('Modelo/ModeloVehiculo.php');
 		require_once('Modelo/ModeloUbicacion.php');
 		require_once('Controlador/SanitizadorDatos.php');
+<<<<<<< HEAD
+=======
+=======
+		require('Modelo/ModeloUsuario.php');
+		require('Modelo/ModeloInventario.php');
+		require('Modelo/ModeloVehiculo.php');
+		require('Modelo/ModeloUbicacion.php');
+		require('Controlador/SanitizadorDatos.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$this->modelo = new ModeloInventario();
 		$this->modeloUsuario = new ModeloUsuario();
 		$this->modeloVehiculo = new ModeloVehiculo();
@@ -53,6 +67,68 @@ class ControladorInventario
 		return $modelo;
 	}
 
+<<<<<<< HEAD
+=======
+	/*function __set($modeloUsuario, $valor)
+	{
+		/**
+		*Modifica el valor de ModeloUsuario
+		*@param $modelo tipo Object
+		*@param $valor tipo String
+		
+		$this->modeloUsuario = $modeloUsuario;
+	}
+
+	function __get($modeloUsuario)
+	{
+		/**
+		*Retorna el valor de ModeloUsuario
+		*@param $modelo tipo Object
+		*@return $modelo tipo Object
+		
+		return $modeloUsuario;
+	}
+
+	function __set($modeloUbicacion, $valor)
+	{
+		/**
+		*Modifica el valor de ModeloUbicacion
+		*@param $modelo tipo Object
+		*@param $valor tipo String
+		
+		$this->modeloUbicacion = $modeloUbicacion;
+	}
+
+	function __get($modeloUbicacion)
+	{
+		/**
+		*Retorna el valor de ModeloUbicacion
+		*@param $modelo tipo Object
+		*@return $modelo tipo Object
+		
+		return $modeloUbicacion;
+	}
+
+	function __set($modeloVehiculo, $valor)
+	{
+		/**
+		*Modifica el valor de ModeloVehiculo
+		*@param $modelo tipo Object
+		*@param $valor tipo String
+		
+		$this->modeloVehiculo = $modeloVehiculo;
+	}
+
+	function __get($modeloVehiculo)
+	{
+		/**
+		*Retorna el valor de ModeloVehiculo
+		*@param $modelo tipo Object
+		*@return $modelo tipo Object
+		
+		return $modeloVehiculo;
+	}*/
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 
 
 	function run()
@@ -66,6 +142,7 @@ class ControladorInventario
 
 			switch ($_GET['actividad']) {
 				case 'listar':
+<<<<<<< HEAD
 					if(ValidadorSesion::estaLogueado())
 					{
 						if(ValidadorSesion::esAdmin() ||
@@ -135,6 +212,18 @@ class ControladorInventario
 					{
 						require_once('Vista/Login.php');
 					}	
+=======
+					$this->listar();
+					break;
+				case 'agregar':
+					$this->agregar();
+					break;
+				case 'eliminar':
+					$this->eliminar();
+					break;
+				case 'modificar':
+					$this->modificar();
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 					break;
 				default:
 					echo 'Error: Esa Actividad no existe';
@@ -164,7 +253,15 @@ class ControladorInventario
 		   isset($resultUsuario))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/ListaInventario.php');
+=======
+<<<<<<< HEAD
+			require_once('Vista/ListaInventario.php');
+=======
+			require('Vista/ListaInventario.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		}
 		else
 		{
@@ -187,9 +284,20 @@ class ControladorInventario
 		$golpe = SanitizadorDatos::validaTexto($_POST['golpe']);
 		$severidad = SanitizadorDatos::validaTexto($_POST['severidad']);
 		$piezaGolpeada = SanitizadorDatos::validaTexto($_POST['piezaGolpeada']);
+<<<<<<< HEAD
 		$numEmpleado = SanitizadorDatos::validaNumero($_POST['numEmpleado']);
 
 		$result = $this->modelo->agregar($numEmpleado,$vin, $kilometraje, 
+=======
+<<<<<<< HEAD
+		$numEmpleado = SanitizadorDatos::validaNumero($_POST['numEmpleado']);
+
+		$result = $this->modelo->agregar($numEmpleado,$vin, $kilometraje, 
+=======
+
+		$result = $this->modelo->agregar($vin, $kilometraje, 
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 										 $combustible, $golpe, 
 										 $severidad, $piezaGolpeada);
 
@@ -197,7 +305,15 @@ class ControladorInventario
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/AgregarInventario.php');
+=======
+<<<<<<< HEAD
+			require_once('Vista/AgregarInventario.php');
+=======
+			require('Vista/AgregarInventario.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		}
 		else
 		{
@@ -220,17 +336,38 @@ class ControladorInventario
 		$golpe = SanitizadorDatos::validaTexto($_POST['golpe']);
 		$severidad = SanitizadorDatos::validaTexto($_POST['severidad']);
 		$piezaGolpeada = SanitizadorDatos::validaTexto($_POST['piezaGolpeada']);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$numEmpleado = SanitizadorDatos::validaNumero($_POST['numEmpleado']);
 		
 		$result = $this->modelo->modificar($vin, $kilometraje,  
 		               					   $combustible, $golpe,
 		               					   $severidad, $piezaGolpeada,$numEmpleado);
+<<<<<<< HEAD
+=======
+=======
+		
+		$result = $this->modelo->modificar($vin, $kilometraje,  
+		               					   $combustible, $golpe,
+		               					   $severidad, $piezaGolpeada);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 
 		//Revisa si se realizo la modificacion
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require_once('Vista/ModificaInventario.php');
+=======
+<<<<<<< HEAD
+			require_once('Vista/ModificaInventario.php');
+=======
+			require('Vista/ModificaInventario.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		}
 		else
 		{
@@ -255,7 +392,15 @@ class ControladorInventario
 		if(isset($result))
 		{
 			///carga la vista
+<<<<<<< HEAD
 			require_once('Vista/EliminaInventario.php');
+=======
+<<<<<<< HEAD
+			require_once('Vista/EliminaInventario.php');
+=======
+			require('Vista/EliminaInventario.php');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		}
 		else
 		{

@@ -18,9 +18,14 @@ class ControladorUsuario
 		*@param string
 		*@throws No se generan excepciones
 		*/
+<<<<<<< HEAD
 		require_once('Controlador/ValidadorSesion.php');
 		require_once('Modelo/ModeloUsuario.php');
 		require_once('Controlador/SanitizadorDatos.php');
+=======
+		require('Modelo/ModeloUsuario.php');
+		require('Controlador/SanitizadorDatos.php');
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 		$this->modelo = new ModeloUsuario();
 	}
 
@@ -55,6 +60,7 @@ class ControladorUsuario
 
 			switch ($_GET['actividad']) {
 				case 'listar':
+<<<<<<< HEAD
 					if(ValidadorSesion::estaLogueado())
 					{
 						if(ValidadorSesion::esAdmin())
@@ -121,6 +127,18 @@ class ControladorUsuario
 					{
 						require_once('Vista/Login.php');
 					}
+=======
+					$this->listar();
+					break;
+				case 'crear':
+					$this->crear();
+					break;
+				case 'eliminar':
+					$this->eliminar();
+					break;
+				case 'modificar':
+					$this->modificar();
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
 					break;
 				default:
 					echo 'Error: Esa Actividad no existe';
