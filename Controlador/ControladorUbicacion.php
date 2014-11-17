@@ -17,9 +17,20 @@ class ControladorUbicacion
 		*@param No recibe
 		*@throws No se generan excepciones
 		*/
+<<<<<<< HEAD
 		require_once('Controlador/ValidadorSesion.php');
 		require_once('Modelo/ModeloUbicacion.php');
 		require_once('Controlador/SanitizadorDatos.php');
+=======
+<<<<<<< HEAD
+		require_once('Controlador/ValidadorSesion.php');
+		require_once('Modelo/ModeloUbicacion.php');
+		require_once('Controlador/SanitizadorDatos.php');
+=======
+		require('Modelo/ModeloUbicacion.php');
+		require('Controlador/SanitizadorDatos.php');
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		$this->modelo = new ModeloUbicacion();
 	}
 
@@ -53,6 +64,7 @@ class ControladorUbicacion
 		*/
 			switch ($_GET['actividad']) 
 			{
+<<<<<<< HEAD
 				case 'listarUbicacion':
 				 	if(ValidadorSesion::estaLogueado())
 					{
@@ -78,6 +90,10 @@ class ControladorUbicacion
 					break;
 
 				case 'listar':
+=======
+				case 'listar':
+<<<<<<< HEAD
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 					if(ValidadorSesion::estaLogueado())
 					{
 						if(ValidadorSesion::esAdmin()|| 
@@ -88,6 +104,7 @@ class ControladorUbicacion
 						}
 						else
 						{
+<<<<<<< HEAD
 							$vista = file_get_contents('Vista/Permisos.html');
 							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
 							echo $vista;
@@ -113,14 +130,23 @@ class ControladorUbicacion
 							$vista = file_get_contents('Vista/Permisos.html');
 							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
 							echo $vista;
+=======
+							require_once('Vista/Permisos.php');
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 						}
 					}
 					else
 					{
+<<<<<<< HEAD
 						require_once('Vista/Login.html');
 					}	
 					break;
 
+=======
+						require_once('Vista/Login.php');
+					}	
+					break;
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 				case 'eliminar':
 				     if(ValidadorSesion::estaLogueado())
 					{
@@ -131,13 +157,18 @@ class ControladorUbicacion
 						}
 						else
 						{
+<<<<<<< HEAD
 							$vista = file_get_contents('Vista/Permisos.html');
 							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
 							echo $vista;
+=======
+							require_once('Vista/Permisos.php');
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 						}
 					}
 					else
 					{
+<<<<<<< HEAD
 						require_once('Vista/Login.html');
 					}	
 					break;
@@ -161,6 +192,9 @@ class ControladorUbicacion
 					else
 					{
 						require_once('Vista/Login.html');
+=======
+						require_once('Vista/Login.php');
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 					}	
 					break;
 				case 'modificar':
@@ -173,13 +207,18 @@ class ControladorUbicacion
 						}
 						else
 						{
+<<<<<<< HEAD
 							$vista = file_get_contents('Vista/Permisos.html');
 							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
 							echo $vista;
+=======
+							require_once('Vista/Permisos.php');
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 						}
 					}
 					else
 					{
+<<<<<<< HEAD
 						require_once('Vista/Login.html');
 					}	
 					break;
@@ -203,6 +242,9 @@ class ControladorUbicacion
 					else
 					{
 						require_once('Vista/Login.html');
+=======
+						require_once('Vista/Login.php');
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 					}	
 					break;
 				case 'agregar':
@@ -215,15 +257,36 @@ class ControladorUbicacion
 						}
 						else
 						{
+<<<<<<< HEAD
 							$vista = file_get_contents('Vista/Permisos.html');
 							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
 							echo $vista;
+=======
+							require_once('Vista/Permisos.php');
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 						}
 					}
 					else
 					{
+<<<<<<< HEAD
 						require_once('Vista/Login.html');
 					}	
+=======
+						require_once('Vista/Login.php');
+					}	
+=======
+					$this->listar();
+					break;
+				case 'eliminar':
+					$this->eliminar();
+					break;
+				case 'modificar':
+					$this->modificar();
+					break;
+				case 'agregar':
+					$this->agregar();
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 					break;
 				default:
 					echo 'Error: La actividad no existe';
@@ -246,6 +309,7 @@ class ControladorUbicacion
 
 		//Revisa si se puede listar la ubicacion
 		if(isset($result))
+<<<<<<< HEAD
 		{	
 			$diccionario = array('{vin}'=>$this->modelo->datos['vin'],
 			                    '{ubicacion}'=>$this->modelo->datos['ubicacion'],
@@ -260,6 +324,15 @@ class ControladorUbicacion
 		else
 		{
 			require('Vista/UbicacionInexistente.html');
+=======
+		{
+			//carga la vista
+			require('Vista/ListaUbicacion.php');
+		}
+		else
+		{
+			echo 'Error: la Ubicacion no existe';
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		}
 	}
 
@@ -280,6 +353,7 @@ class ControladorUbicacion
 		//Revisa si la ubicacion se agregó
 		if(isset($result))
 		{
+<<<<<<< HEAD
 			$diccionario = array('{vin}'=>$this->modelo->datos['vin'],
 			                    '{ubicacion}'=>$this->modelo->datos['ubicacion'],
 			                    '{subUbicacion}'=>$this->modelo->datos['subUbicacion'],
@@ -293,6 +367,14 @@ class ControladorUbicacion
 		else
 		{
 			require('Vista/UbicacionNoAgregada.html');
+=======
+			//carga la vista
+			require('Vista/AgregarUbicacion.php');
+		}
+		else
+		{
+			echo 'Error: La ubicacion no se pudo agregar';
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		}
 	}
 
@@ -315,6 +397,7 @@ class ControladorUbicacion
 		//Revisa si se realizo la modificacion
 		if(isset($result))
 		{
+<<<<<<< HEAD
 			$diccionario = array('{vin}'=>$this->modelo->datos['vin'],
 			                    '{ubicacion}'=>$this->modelo->datos['ubicacion'],
 			                    '{subUbicacion}'=>$this->modelo->datos['subUbicacion'],
@@ -328,6 +411,14 @@ class ControladorUbicacion
 		else
 		{
 			require('Vista/UbicacionInexistente.html');
+=======
+			//carga la vista
+			require('Vista/ModificaUbicacion.php');
+		}
+		else
+		{
+			echo 'Error: La ubicacion no se encontro';
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		}
 	}
 
@@ -348,11 +439,19 @@ class ControladorUbicacion
 		if(isset($result))
 		{
 			//carga la vista
+<<<<<<< HEAD
 			require('Vista/UbicacionEliminada.html');
 		}
 		else
 		{
 			echo require('Vista/UbicacionInexistente.html');
+=======
+			require('Vista/EliminaUbicacion.php');
+		}
+		else
+		{
+			echo 'Error: La ubicacion ya no existe';
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		}
 	}
 }

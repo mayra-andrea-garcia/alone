@@ -78,12 +78,22 @@ class SingletonBD
 
    public function eliminar($query)
    {
+<<<<<<< HEAD
    
    	$this->eliminarExitoso = $this->manejadorBD->query($query);
+=======
+   	/**
+   	*Elimina el query que recibe por parametro
+   	*@param $query string
+   	*@return $eliminarExitoso boolean
+   	*/
+   		$this->eliminarExitoso = $this->manejadorBD->query($query);
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		if($this->manejadorBD->error)
 		{
 			print 'ERROR: EL QUERY AL ELIMINAR FALLO';
 			print '<br/>';
+<<<<<<< HEAD
       return $this->eliminarExitoso;
 		}
 		else
@@ -101,6 +111,24 @@ class SingletonBD
    public function modificar($query, $select)
    {
    	$this->modificarExitoso = $this->manejadorBD->query($query);
+=======
+		}
+		else if($this->eliminarExitoso) 
+		{ 
+			return $this->eliminarExitoso;
+		}
+   }
+
+   public function modificar($query, $select)
+   {
+   	/**
+   	*Modifica el query que recibe y selecciona
+   	*@param $query string 
+   	*@param $select string
+   	*@return $datos array
+   	*/
+   		$this->modificarExitoso = $this->manejadorBD->query($query);
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		if($this->manejadorBD->error)
 		{
 			print 'ERROR: EL QUERY AL MODIFICAR FALLO';
@@ -109,6 +137,7 @@ class SingletonBD
 		else if($this->modificarExitoso) 
 		{ 
 			$objectoMysqli = $this->manejadorBD->query($select);
+<<<<<<< HEAD
       $this->datos = $objectoMysqli->fetch_assoc();
       return $this->datos;
 		}
@@ -124,6 +153,25 @@ class SingletonBD
    {
    	
    	$objectoMysqli = $this->manejadorBD->query($query);
+=======
+			$this->datos = $objectoMysqli->fetch_assoc();
+			return $this->datos;
+		}
+   }
+
+   public function listar($query)
+   {
+   	/**
+   	*Lista el query que recibe
+   	*@param $query string
+   	*@return $datos array
+   	*/
+<<<<<<< HEAD
+   	$objectoMysqli = $this->manejadorBD->query($query);
+=======
+   		$objectoMysqli = $this->manejadorBD->query($query);
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		if($this->manejadorBD->error)
 		{
 			print 'ERROR: EL QUERY AL LISTAR FALLO';
@@ -136,15 +184,19 @@ class SingletonBD
 			return $this->datos;
 		}
    }
+<<<<<<< HEAD
    /**
     *Lista el query que recibe
     *@param $query string
     *@return $datos array
     */
+=======
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 
 	// Evita que el objeto se pueda clonar
     public function __clone()
     {
+<<<<<<< HEAD
         trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
     }
       /**
@@ -152,6 +204,15 @@ class SingletonBD
       *@param No contiene
       *@return No contiene
       */
+=======
+    	/**
+    	*Evita que este objeto sea clonado
+    	*@param No contiene
+    	*@return No contiene
+    	*/
+        trigger_error('La clonación de este objeto no está permitida', E_USER_ERROR);
+    }
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 }
 
 ?>

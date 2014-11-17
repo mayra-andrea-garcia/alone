@@ -5,11 +5,26 @@ class ModeloUbicacion
 
 	public $datos;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 	function __construct()
 	{
 		require_once("SingletonBD.php");
 		$this->manejadorBD = SingletonBD::singleton();
 	}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 
 	function listar($vin)
 	{
@@ -18,11 +33,29 @@ class ModeloUbicacion
 	*@param $vin string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		$vin = $this->manejadorBD->escaparVariable($vin);
 
 		$query = "SELECT * FROM Ubicacion WHERE vin='$vin';";
 		$this->datos = $this->manejadorBD->listar($query);
 	
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+		$this->datos = array('vin'=>$vin,
+							 'ubicacion'=>'VariableUbicacionBD',
+							 'subUbicacion'=>'VariableSubUbicacionBD');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		return $this->datos;
 	}
 
@@ -35,6 +68,13 @@ class ModeloUbicacion
 	*@param $subUbicaicon string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		$vin = $this->manejadorBD->escaparVariable($vin);
 		$ubicacion = $this->manejadorBD->escaparVariable($ubicacion);
 		$subUbicacion = $this->manejadorBD->escaparVariable($subUbicacion);
@@ -43,6 +83,17 @@ class ModeloUbicacion
 		$select = "SELECT * FROM Ubicacion WHERE vin = '$vin';";
 		$this->datos = $this->manejadorBD->insertar($query, $select);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+		$this->datos = array('vin'=>$vin,
+						     'ubicacion'=>$ubicacion,
+							 'subUbicacion'=>$subUbicacion);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		return $this->datos;
 	}
 
@@ -56,6 +107,7 @@ class ModeloUbicacion
 	*@param $NsubUbicaicon string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
 		$vin = $this->manejadorBD->escaparVariable($vin);
 		$Nubicacion = $this->manejadorBD->escaparVariable($Nubicacion);
 		$NsubUbicacion = $this->manejadorBD->escaparVariable($NsubUbicacion);
@@ -64,6 +116,28 @@ class ModeloUbicacion
 		          WHERE vin = $vin";
 		$select = "SELECT * FROM Ubicacion WHERE vin = $vin;";
 		$this->datos = $this->manejadorBD->modificar($query, $select);
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+		$vin = $this->manejadorBD->escaparVariable($vin);
+		$Nubicacion = $this->manejadorBD->escaparVariable($Nubicacion);
+		$NsubUbicaicon = $this->manejadorBD->escaparVariable($NsubUbicaicon);
+
+		$query = "UPDATE Ubicacion SET ubicacion = '$Nubicacion', subUbicacion = '$NsubUbicaicon'
+		          WHERE vin = $vin";
+		$select = "SELECT * FROM  WHERE vin = $vin;";
+		$this->datos = $this->manejadorBD->modificar($query, $select);
+<<<<<<< HEAD
+=======
+=======
+		$this->datos = array('vin'=>$vin,
+							 'ubicacion'=>$Nubicacion,
+							 'subUbicacion'=>$NsubUbicacion);
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		return $this->datos;
 	}
 
@@ -75,11 +149,29 @@ class ModeloUbicacion
 	*@param $vin string
 	*@return $datos array
 	**/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		$vin = $this->manejadorBD->escaparVariable($vin);
 
 		$query = "DELETE FROM Ubicacion WHERE vin='$vin';";
 		$this->datos = $this->manejadorBD->eliminar($query);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+		$this->datos = array('vin'=>'NULL',
+							 'ubicacion'=>'NULL',
+							 'subUbicacion'=>'NULL');
+>>>>>>> a7bd1f78dfe18bc3e9f1c08962a017205decdf9a
+>>>>>>> 1e8c7f46df4299193a86d17f17aa84a1c1decc3d
+>>>>>>> 219de2d412cbc92ad4d8cbcfd7c14da91f6760f6
 		return $this->datos;
 	}
 }
