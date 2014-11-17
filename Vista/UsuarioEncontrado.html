@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+  <head>
+    <title>TallerSuperStar</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="">
+  </head>
+  <style type="text/css">
+
+   header{ 
+    position: absolute;
+    z-index: 1032;
+    top: 0;
+    width: 100%;
+    height: 130px;
+    margin: 0px;
+    background-color: #585858;
+    border-bottom: 2px solid black;
+   }
+
+   html, body{
+    width: 100%;
+    height: 100%;
+    min-width: 340px;
+   }
+
+   header #logo_cabecera{
+    float: left;
+   }
+
+   .clear {
+    clear: both;
+   }
+
+   div ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+   }
+
+   footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+   }
+
+   footer #pie_pagina{
+    width: 94%;
+    padding: 0 3%;
+   }
+
+   footer #copyright{
+    width: 120px;
+    font-size: 0.8em;
+    padding-top: 0.5em; 
+    color: #848484;
+   }
+
+   h1{
+    position: absolute;
+    float: left;
+    padding-right: 10em;
+    padding-bottom: 5em;
+    padding-top: 1em;
+   }
+
+   #opciones_cuenta{
+    float:right;
+    padding: 2em;
+    color:#FFFFFF;
+   }
+
+   p {
+    float:left;
+   }
+
+   img {
+    position: absolute;
+    float: right;
+   }
+
+    #Perfiles, #usuario, #vehiculo, #inventario, #ubicacion{
+    padding-left: 6em;
+    padding-right: 6em;
+    background-color: #A52A2A;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: 2px solid black;
+   }
+
+   #creaUsuario{
+    position: absolute;
+    padding-top: 13em;
+    padding-left: 30em;
+    padding-right: 25em;
+    padding-bottom: 5em;
+    background-color: #BDB76B;
+   }
+
+   .datos{
+    font-size: 14pt;
+    background-color: #BDB76B;
+   }
+  </style>
+  <body>
+    <div>
+ <header id="logo_cabecera">
+      <h1>TallerSuperStar</h1>
+        <div id="opciones_cabecera">
+              <ul id="opciones_cuenta">
+                <li>
+                  <a href="index.php?control=login&actividad=modificar">Cambiar Constraseña</a>
+                </li>
+                <li><a href="index.php?control=login&actividad=logout">Logout</a></li>
+              </ul>
+            </li>
+        </div>
+        <p id="bienvenida">Bienvenido al Taller de Vehiculos SuperStar</p>
+        <br/>
+        <div class="clear"></div> 
+        <form id="MenuPrincipal" action="index.php?control=login&actividad=login" method="POST">
+        <input type="button" id="Perfiles" value="PERFILES USUARIO"/>
+        <input type="button" id="usuario" value="EMPLEADOS"/>
+        <input type="button" id="vehiculo" value="VEHICULO"/>
+        <input type="button" id="inventario" value="INVENTARIO"/>
+        <input type="button" id="ubicacion" value="UBICACION"/> 
+        </form>   
+    </header>
+      <div>
+        <div>
+          <section>
+            <div>
+              <form id="creaUsuario" action="index.php?control=usuario&actividad=crear" method="POST">
+                <h2>Datos Empleado</h2>
+                <strong>
+                  NOTA: El empleado con el numero que nos diste es:
+                </strong>
+                <br/>
+                <br/>
+                <label for="nombre">Nombre</label>
+                <input class="datos" type="text" id="nombre" name="nombre" value="{nombre}" readOnly="true"/>
+                <br/>
+                <label for="mail">Correo</label>
+                <input  class="datos" type="email" id="mail" name="email" placeholder="tucorreo@dominio.com" value="{email}" readOnly="true"/>
+                <br/>
+                <label for="telefono">Telefono</label>
+                <input class="datos"type="telefono" id="telefono" name="telefono" value="{telefono}" readOnly="true"/>
+                <br/>
+                <label for="direccion">Direccion</label>
+                <input class="datos" type="text" id="direccion" name="direccion" value="{direccion}" readOnly="true"/>
+                <br/>
+                <label for="rfc">RFC</label>
+                <input class="datos" type="text" id="rfc" name="rfc" value="{rfc}" readOnly="true"/>
+                <br/>
+                <label for="numEmpleado">Numero Empleado</label> 
+                <input class="datos" type="text" id="numEmpleado" name="numEmpleado" value="{numEmpleado}" readOnly="true"/>
+                <br/>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+      <footer class="footer">
+        <div id="pie_pagina">
+          <hr>
+          <p id="copyright">© ALONE 2014</p>
+        </div>
+      </footer> 
+    </div>
+  </body>
+</html> 
