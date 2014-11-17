@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+  <head>
+    <title>TallerSuperStar</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="www/IMG/logo.ico"> 
+  </head>
+  <style type="text/css">
+
+   header{ 
+    position: absolute;
+    z-index: 1032;
+    top: 0;
+    width: 100%;
+    height: 130px;
+    margin: 0px;
+    background-color: #585858;
+    border-bottom: 2px solid black;
+   }
+
+   html, body{
+    width: 100%;
+    height: 100%;
+    min-width: 340px;
+   }
+
+   header #logo_cabecera{
+    float: left;
+   }
+
+   .clear {
+    clear: both;
+   }
+
+   div ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+   }
+
+   footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+   }
+
+   footer #pie_pagina{
+    width: 94%;
+    padding: 0 3%;
+   }
+
+   footer #copyright{
+    width: 120px;
+    font-size: 0.8em;
+    padding-top: 0.5em; 
+    color: #848484;
+   }
+
+   h1{
+    position: absolute;
+    float: left;
+    padding-right: 10em;
+    padding-bottom: 10em;
+    padding-top: 1em;
+   }
+
+   #opciones_cuenta{
+    float:right;
+    padding: 2em;
+    color:#FFFFFF;
+   }
+
+   p {
+    float:left;
+   }
+
+   img {
+    position: absolute;
+    float: right;
+   }
+
+    #Perfiles, #usuario, #vehiculo, #inventario, #ubicacion{
+    padding-left: 6em;
+    padding-right: 6em;
+    background-color: #A52A2A;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: 2px solid black;
+   }
+
+   #aviso
+   {
+   	padding-top: 6em;
+   	padding-left: 5em;
+    padding-right: 1em;
+    padding-bottom: 3em;
+    background-color: #BDB76B;
+    font-size: 40pt;
+   }
+
+  </style>
+  <body>
+    <header id="logo_cabecera">
+      <h1>TallerSuperStar</h1>
+        <div id="opciones_cabecera">
+              <ul id="opciones_cuenta">
+                <li>
+                  <a href="index.php?control=login&actividad=modificar">Cambiar Constraseña</a>
+                </li>
+                <li><a href="index.php?control=login&actividad=logout">Logout</a></li>
+              </ul>
+            </li>
+        </div>
+        <br/>
+        <div class="clear"></div> 
+        <form id="cambiarContrasena" action="index.php?control=login&actividad=login" method="POST">
+        <input type="button" id="Perfiles" value="PERFILES USUARIO"/>
+        <input type="button" id="usuario" value="EMPLEADOS"/>
+        <input type="button" id="vehiculo" value="VEHICULO"/>
+        <input type="button" id="inventario" value="INVENTARIO"/>
+        <input type="button" id="ubicacion" value="UBICACION"/> 
+        </form>   
+    </header>
+    <section id="aviso">
+    	<span>Lo siento el nombre que proporcionas ya esta registrado intenta otro</span>
+    </section>
+			<footer class="footer">
+				<div id="pie_pagina">
+					<hr>
+					<p id="copyright">© ALONE 2014</p>
+				</div>
+			</footer>	
+		</div>
+	</body>
+</html>	
