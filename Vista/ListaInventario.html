@@ -4,7 +4,6 @@
     <title>TallerSuperStar</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="www/img/favicon.ico">
   </head>
  <style type="text/css">
 
@@ -74,12 +73,7 @@
     float:left;
    }
 
-   img {
-    position: absolute;
-    float: right;
-   }
-
-    #Perfiles, #usuario, #vehiculo, #inventario, #ubicacion{
+  #home{
     padding-left: 6em;
     padding-right: 6em;
     background-color: #A52A2A;
@@ -90,6 +84,9 @@
     border: 2px solid black;
    }
 
+   #linkHome{
+    color: white;
+   }
    .boton_enviar{
     font-size: 12pt;
    }
@@ -118,13 +115,9 @@
         <p id="bienvenida">Bienvenid@ {nombre_sesion} al Taller de Vehiculos SuperStar</p>
         <br/>
         <div class="clear"></div> 
-        <form id="MenuPrincipal" action="index.php?control=login&actividad=login" method="POST">
-        <input type="button" id="Perfiles" value="PERFILES USUARIO"/>
-        <input type="button" id="usuario" value="EMPLEADOS"/>
-        <input type="button" id="vehiculo" value="VEHICULO"/>
-        <input type="button" id="inventario" value="INVENTARIO"/>
-        <input type="button" id="ubicacion" value="UBICACION"/> 
-        </form>   
+        <div id="home">
+        <a id="linkHome" href="index.php?control=login&actividad=login">HOME</a> 
+        </div>   
     </header>
       <div>
         <div>
@@ -144,6 +137,9 @@
                 <br/>
                 <input class="boton_enviar" type="submit" value="Buscar"/>
               </form>
+              <section>
+                
+              </section>
             </div>
           </section>
         </div>

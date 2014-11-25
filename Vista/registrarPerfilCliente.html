@@ -4,7 +4,6 @@
     <title>TallerSuperStar</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="">
   </head>
   <style type="text/css">
 
@@ -74,12 +73,7 @@
     float:left;
    }
 
-   img {
-    position: absolute;
-    float: right;
-   }
-
-    #Perfiles, #usuario, #vehiculo, #inventario, #ubicacion{
+   #home{
     padding-left: 6em;
     padding-right: 6em;
     background-color: #A52A2A;
@@ -88,6 +82,10 @@
     padding-top: 1em;
     padding-bottom: 1em;
     border: 2px solid black;
+   }
+
+   #linkHome{
+    color: white;
    }
 
    #creaUsuario{
@@ -102,7 +100,22 @@
   <body>
    <div>
     <header id="logo_cabecera">
-      <h1>Registro TallerSuperStar</h1>  
+      <h1>TallerSuperStar</h1>
+        <div id="opciones_cabecera">
+              <ul id="opciones_cuenta">
+                <li>
+                  <a href="index.php?control=login&actividad=modificar">Cambiar Constraseña</a>
+                </li>
+                <li><a href="index.php?control=login&actividad=logout">Logout</a></li>
+              </ul>
+            </li>
+        </div>
+        <p id="bienvenida">Bienvenid@ {nombre_sesion} al Taller de Vehiculos SuperStar</p>
+        <br/>
+        <div class="clear"></div> 
+        <div id="home">
+        <a id="linkHome" href="index.php?control=login&actividad=login">HOME</a> 
+        </div>   
     </header>
       <div>
         <div>

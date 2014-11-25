@@ -68,6 +68,48 @@ class ControladorVehiculo
 						require_once('Vista/Login.html');
 					}	
 					break;
+				case 'modificarEstado':
+					if(ValidadorSesion::estaLogueado())
+					{
+						if(ValidadorSesion::esAdmin() ||
+							ValidadorSesion::esEmpleado())
+						{
+							$vista = file_get_contents('Vista/ModificaVehiculoE.html');
+							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
+							echo $vista;
+						}
+						else
+						{
+							$vista = file_get_contents('Vista/Permisos.html');
+							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
+							echo $vista;
+						}
+					}
+					else
+					{
+						require_once('Vista/Login.html');
+					}
+						break;
+				case 'modificarE':
+					if(ValidadorSesion::estaLogueado())
+					{
+						if(ValidadorSesion::esAdmin() ||
+							ValidadorSesion::esEmpleado())
+						{
+							$this->modificarEstado();
+						}
+						else
+						{
+							$vista = file_get_contents('Vista/Permisos.html');
+							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
+							echo $vista;
+						}
+					}
+					else
+					{
+						require_once('Vista/Login.html');
+					}
+						break;
 				case 'crear':
 					if(ValidadorSesion::estaLogueado())
 					{
@@ -287,6 +329,30 @@ class ControladorVehiculo
 				default:
 					print 'Error: La activdad: '.$act.' no existe porfavor intente con otra';
 					break;
+			case 'buscarE':
+					if(ValidadorSesion::estaLogueado())
+					{
+						if(ValidadorSesion::esAdmin() ||
+							ValidadorSesion::esEmpleado() ||
+							ValidadorSesion::esCliente())
+						{
+							$this->buscarE();
+						}
+						else
+						{
+							$vista = file_get_contents('Vista/Permisos.html');
+							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
+							echo $vista;
+						}
+					}
+					else
+					{
+						require_once('Vista/Login.html');
+					}	
+					break;
+				default:
+					print 'Error: La activdad: '.$act.' no existe porfavor intente con otra';
+					break;
 			}
 	}
 	/**
@@ -295,6 +361,54 @@ class ControladorVehiculo
 		*@return No retorna valor
 		*@throws No lleva excepciones
 		*/
+	function enviarCorreo($tipo, $mail, $nombreUsuario, $vin)
+	{
+		switch($tipo)
+		{
+			case 'crear':      $message = "Hola $nombreUsuario"."<br/>"."<br/>"."Solo para informarte que tu vehiculo se encuentra en el taller,"."<br/>".
+           								  "todavia no es procesado"."<br/>"."<br/>"."Saludos";
+								$para =   "$mail";
+								$titulo = 'VEHICULO REGISTRADO EN EL TALLER DE VEHICULOS';
+								// Cabeceras adicionales
+								$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+								$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+								$cabeceras .= "To: $mail" . "\r\n";
+								$cabeceras .= 'From: mayra.garcia@alone-mayra.comli.com' . "\r\n";
+
+								$band = mail($para, $titulo, $message, $cabeceras); 
+							   return $band;
+						       break;
+			case 'movimiento': $message = "Hola $nombreUsuario"."<br/>"."<br/>"."Solo para informarte que tu vehiculo ya es en proceso de reparacion!!,"."<br/>".
+           								  "<br/>"."<br/>"."Saludos";
+								$para =   "$mail";
+								$titulo = 'VEHICULO REGISTRADO EN EL TALLER DE VEHICULOS';
+								// Cabeceras adicionales
+								$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+								$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+								$cabeceras .= "To: $mail" . "\r\n";
+								$cabeceras .= 'From: mayra.garcia@alone-mayra.comli.com' . "\r\n";
+
+								$band = mail($para, $titulo, $message, $cabeceras); 
+							   return $band;
+							   break;
+			case 'salida':		$message = "Hola $nombreUsuario"."<br/>"."<br/>"."Solo para informarte que tu vehiculo ya esta listo para que lo recogas!!,"."<br/>".
+           								  "<br/>"."<br/>"."Saludos";
+								$para =   "$mail";
+								$titulo = 'VEHICULO REGISTRADO EN EL TALLER DE VEHICULOS';
+								// Cabeceras adicionales
+								$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+								$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+								$cabeceras .= "To: $mail" . "\r\n";
+								$cabeceras .= 'From: mayra.garcia@alone-mayra.comli.com' . "\r\n";
+
+								$band = mail($para, $titulo, $message, $cabeceras); 
+							   return $band;
+						  break;
+			
+		}
+
+		
+	}
 
 	private function crear()
 	{
@@ -308,17 +422,19 @@ class ControladorVehiculo
 		$tipo = SanitizadorDatos::validaTexto($_POST['tipo']);
 		$modelo = SanitizadorDatos::validaNumero($_POST['modelo']);
 		$numEmpleado = SanitizadorDatos::validaNumero($_POST['numEmpleado']);
+		$estado = 'entrada';
 
-		$result = $this->modelo->crear($vin, $marca, $tipo, $modelo, $fecha, $dia, $numEmpleado);
+		$result = $this->modelo->crear($vin, $marca, $tipo, $modelo, $fecha, $dia, $numEmpleado, $estado);
 
 		//Revisa si se creo el Vehiculo
 		if(isset($result))
 		{
+			$envioExitoso=$this->enviarCorreo($mail,$nombreUsuario,$vin);
 			$diccionario = array('{vin}'=>$this->modelo->datos['vin'],
 			                    '{marca}'=>$this->modelo->datos['marca'],
 			                    '{tipo}'=>$this->modelo->datos['tipo'],
 			                    '{modelo}'=>$this->modelo->datos['modelo'],
-			                    '{numEmpleado}'=>$this->modelo->datos['num_empleado'],
+			                    '{numEmpleado}'=>$this->modelo->datos['numEmpleado'],
 			                    '{nombre_sesion}'=>$_SESSION['usuario']);
 			$vista = file_get_contents('Vista/VehiculoCreado.html');
 			foreach ($diccionario as $dato => $significado) {
@@ -358,10 +474,46 @@ class ControladorVehiculo
 			                    '{marca}'=>$this->modelo->datos['marca'],
 			                    '{tipo}'=>$this->modelo->datos['tipo'],
 			                    '{modelo}'=>$this->modelo->datos['modelo'],
-			                    '{numEmpleado}'=>$this->modelo->datos['num_empleado'],
+			                    '{numEmpleado}'=>$this->modelo->datos['num_Empleado'],
 			                    '{nombre_sesion}'=>$_SESSION['usuario'],
 			                    '{fecha}'=>$this->modelo->datos['fecha']);
 			$vista = file_get_contents('Vista/VehiculoBuscadoAModificar.html');
+			foreach ($diccionario as $dato => $significado) {
+				$vista =str_replace( $dato, $significado , $vista);
+			}
+			echo $vista;
+		}
+		else
+		{
+			require_once('Vista/VehiculoNoEncontrado.html');
+		}
+	}
+
+	private function buscarE()
+	{
+		//Se consiguen los valores desde POST y se Sanitizan
+		$vin = SanitizadorDatos::validaNumero($_POST['vin']);
+		$band = SanitizadorDatos::cadenaVacia($vin);
+
+		if($band)
+		{
+			$result = $this->modelo->listar($vin);
+		}	
+		else
+		{
+			unset($result);
+		}
+		///Revisa si se puede listar el vehiculo
+		if(isset($result))
+		{
+			$diccionario = array('{vin}'=>$this->modelo->datos['vin'],
+			                    '{marca}'=>$this->modelo->datos['marca'],
+			                    '{tipo}'=>$this->modelo->datos['tipo'],
+			                    '{modelo}'=>$this->modelo->datos['modelo'],
+			                    '{numEmpleado}'=>$this->modelo->datos['num_empleado'],
+			                    '{nombre_sesion}'=>$_SESSION['usuario'],
+			                    '{fecha}'=>$this->modelo->datos['fecha']);
+			$vista = file_get_contents('Vista/VehiculoBuscadoAModificarE.html');
 			foreach ($diccionario as $dato => $significado) {
 				$vista =str_replace( $dato, $significado , $vista);
 			}
@@ -394,7 +546,7 @@ class ControladorVehiculo
 			                    '{marca}'=>$this->modelo->datos['marca'],
 			                    '{tipo}'=>$this->modelo->datos['tipo'],
 			                    '{modelo}'=>$this->modelo->datos['modelo'],
-			                    '{numEmpleado}'=>$this->modelo->datos['num_empleado'],
+			                    '{numEmpleado}'=>$this->modelo->datos['numEmpleado'],
 			                    '{nombre_sesion}'=>$_SESSION['usuario'],
 			                    '{fecha}'=>$this->modelo->datos['fecha']);
 			$vista = file_get_contents('Vista/VehiculoEncontrado.html');
@@ -451,6 +603,30 @@ class ControladorVehiculo
 		*@param No contiene
 		*@return No retorna valor
 		*/
+	function modificarEstado()
+	{
+		//Se consiguen los valores desde POST y se Sanitizan
+		$vin = SanitizadorDatos::validaNumero($_POST['vin']);
+		$Nmarca = SanitizadorDatos::validaTexto($_POST['estado']);
+
+		$result = $this->modelo->modificarEstado($vin, $estado);
+
+		//Revisa si se realizo la modificacion
+		if(isset($result))
+		{
+			$diccionario = array('{vin}'=>$this->modelo->datos['vin'],
+			                    '{estado}'=>$this->modelo->datos['estado']);
+			$vista = file_get_contents('Vista/EstadoModificado.html');
+			foreach ($diccionario as $dato => $significado){
+				$vista =str_replace( $dato, $significado , $vista);
+			}
+			echo $vista;
+		}
+		else
+		{
+			require_once('Vista/VehiculoNoEncontrado.html');
+		}
+	}
 
 	private function eliminar()
 	{

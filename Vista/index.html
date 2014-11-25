@@ -3,11 +3,8 @@
   <head>
     <title>TallerSuperStar</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="www/IMG/logo.ico"> 
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <style type="text/css">
-
    header{ 
     position: absolute;
     z-index: 1032;
@@ -60,7 +57,7 @@
     position: absolute;
     float: left;
     padding-right: 10em;
-    padding-bottom: .5em;
+    padding-bottom: 0em;
     padding-top: 1em;
    }
 
@@ -80,8 +77,8 @@
    }
 
     #Perfiles, #usuario, #vehiculo, #inventario, #ubicacion{
-    padding-left: 6em;
-    padding-right: 6em;
+    padding-left: 5em;
+    padding-right: 5em;
     background-color: #A52A2A;
     color: #FFFFFF;
     text-align: center;
@@ -89,8 +86,10 @@
     padding-bottom: 1em;
     border: 2px solid black;
    }
-
   </style>
+  <script type="text/javascript">
+
+  </script>
   <body>
     <header id="logo_cabecera">
       <h1>TallerSuperStar</h1>
@@ -102,54 +101,50 @@
                 <li><a href="index.php?control=login&actividad=logout">Logout</a></li>
               </ul>
         </div>
-        <p id="bienvenida">Bienvenid@ {nombre_sesion} al Taller de Vehiculos SuperStar</p>
-        <br/>
-        <div class="clear"></div> 
-        <form id="cambiarContrasena" action="index.php?control=login&actividad=login" method="POST">
-        <input type="button" id="Perfiles" value="PERFILES USUARIO"/>
-        <input type="button" id="usuario" value="EMPLEADOS"/>
-        <input type="button" id="vehiculo" value="VEHICULO"/>
-        <input type="button" id="inventario" value="INVENTARIO"/>
-        <input type="button" id="ubicacion" value="UBICACION"/> 
-        </form> 
-        <br/>
-        <ul id="P">
-          <li><a href="index.php?control=login&actividad=registrarPerfil">REGISTRAR</a></li>
-          <li><a href="index.php?control=login&actividad=eliminarPerfil">ELIMINAR</a></li>
-        </ul>
-        <ul id="E">
-          <li><a href="index.php?control=login&actividad=crearUsuario">REGISTRAR EMPLEADO</a></li>
-          <li><a href="index.php?control=login&actividad=modificarUsuario">MODIFICAR EMPLEADO</a></li>
-          <li><a href="index.php?control=login&actividad=eliminarUsuario">ELIMINAR EMPLEADO</a></li>
-          <li><a href="index.php?control=login&actividad=listarUsuario">CONSULTAR EMPLEADO</a></li>
-        </ul>
-        <ul id="V">
-          <li><a href="index.php?control=login&actividad=crearVehiculo">REGISTRAR VEHICULO</a></li>
-          <li><a href="index.php?control=login&actividad=modificarVehiculo">MODIFICAR VEHICULO</a></li>
-          <li><a href="index.php?control=login&actividad=eliminarVehiculo">ELIMINAR VEHICULO</a></li>
-          <li><a href="index.php?control=login&actividad=listarVehiculo">CONSULTAR VEHICULO</a></li>
-          <li><a href="index.php?control=login&actividad=listarFechaVehiculo">CONSULTAR  POR FECHA VEHICULO</a></li>
-        </ul>
-        <ul id="I">
-          <li><a href="index.php?control=login&actividad=agregarInventario">REGISTRAR INVENTARIO</a></li>
-          <li><a href="index.php?control=login&actividad=modificarInventario">MODIFICAR INVENTARIO</a></li>
-          <li><a href="index.php?control=login&actividad=eliminarInventario">ELIMINAR INVENTARIO</a></li>
-          <li><a href="index.php?control=login&actividad=listarInventario">CONSULTAR INVENTARIO</a></li>
-        </ul>
-        <ul id="U">
-          <li><a href="index.php?control=login&actividad=agregarUbicacion">REGISTRAR UBICACION</a></li>
-          <li><a href="index.php?control=login&actividad=modificarUbicacion">MODIFICAR UBICACION</a></li>
-          <li><a href="index.php?control=login&actividad=eliminarUbicacion">ELIMINAR UBICACION</a></li>
-          <li><a href="index.php?control=login&actividad=listarUbicacion">CONSULTAR UBICACION</a></li>
-        </ul>
-    </header>
-    <aside id="izquierda">
-    </aside>
-    <aside id="derecha">
-    </aside>
+         <p id="bienvenida">Bienvenid@ {nombre_sesion} al Taller de Vehiculos SuperStar</p>
+         <br/>
+         <div class="clear"></div>
+         <input type="button" id="Perfiles" value="PERFILES USUARIO" onmouseover="muestraMenu('Perfil');"/>
+         <input type="button" id="usuario" value="EMPLEADOS" onmouseover=""/>
+         <input type="button" id="vehiculo" value="VEHICULO" onmouseover=""/>
+         <input type="button" id="inventario" value="INVENTARIO" onmouseover=""/>
+         <input type="button" id="ubicacion" value="UBICACION" onmouseover=""/> 
+         <section>
+         <br/>
+          <ul id="P">
+           <li><a href="index.php?control=login&actividad=registrarPerfil">REGISTRAR</a></li>
+           <li><a href="index.php?control=login&actividad=eliminarPerfil">ELIMINAR</a></li>
+          </ul>
+          <ul id="E">
+           <li><a href="index.php?control=usuario&actividad=crearUsuario">REGISTRAR EMPLEADO</a></li>
+           <li><a href="index.php?control=usuario&actividad=modificarUsuario">MODIFICAR EMPLEADO</a></li>
+           <li><a href="index.php?control=usuario&actividad=eliminaUsuario">ELIMINAR EMPLEADO</a></li>
+           <li><a href="index.php?control=usuario&actividad=listarUsuario">CONSULTAR EMPLEADO</a></li>
+          </ul>
+          <ul id="V">
+           <li><a href="index.php?control=vehiculo&actividad=crearVehiculo">REGISTRAR VEHICULO</a></li>
+           <li><a href="index.php?control=vehiculo&actividad=modificarVehiculo">MODIFICAR VEHICULO</a></li>
+           <li><a href="index.php?control=vehiculo&actividad=modificarEstado">MODIFICAR ESTADO DEL VEHICULO</a></li>
+           <li><a href="index.php?control=vehiculo&actividad=eliminarVehiculo">ELIMINAR VEHICULO</a></li>
+           <li><a href="index.php?control=vehiculo&actividad=listarVehiculo">CONSULTAR VEHICULO</a></li>
+           <li><a href="index.php?control=vehiculo&actividad=listarFechaVehiculo">CONSULTAR  POR FECHA VEHICULO</a></li>
+          </ul>
+          <ul id="I">
+           <li><a href="index.php?control=inventario&actividad=agregarInventario">REGISTRAR INVENTARIO</a></li>
+           <li><a href="index.php?control=inventario&actividad=modificarInventario">MODIFICAR INVENTARIO</a></li>
+           <li><a href="index.php?control=inventario&actividad=eliminaInventario">ELIMINAR INVENTARIO</a></li>
+           <li><a href="index.php?control=inventario&actividad=listarInventario">CONSULTAR INVENTARIO</a></li>
+          </ul>
+          <ul id="U">
+           <li><a href="index.php?control=ubicacion&actividad=agregarUbicacion">REGISTRAR UBICACION</a></li>
+           <li><a href="index.php?control=ubicacion&actividad=modificarUbicacion">MODIFICAR UBICACION</a></li>
+           <li><a href="index.php?control=ubicacion&actividad=eliminarUbicacion">ELIMINAR UBICACION</a></li>
+           <li><a href="index.php?control=ubicacion&actividad=listarUbicacion">CONSULTAR UBICACION</a></li>
+          </ul>
+        </section>
     <div class="clear"></div>
-    <footer>
-      <p id="copyright">© ALONE 2014</p>
-    </footer>
+      <footer class="footer">
+      </footer> 
+    </div>
   </body>
 </html> 

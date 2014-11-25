@@ -4,10 +4,8 @@
     <title>TallerSuperStar</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="www/img/favicon.ico">
   </head>
-    <style type="text/css">
-
+  <style type="text/css">
    header{ 
     position: absolute;
     z-index: 1032;
@@ -74,12 +72,7 @@
     float:left;
    }
 
-   img {
-    position: absolute;
-    float: right;
-   }
-
-    #Perfiles, #usuario, #vehiculo, #inventario, #ubicacion{
+    #home{
     padding-left: 6em;
     padding-right: 6em;
     background-color: #A52A2A;
@@ -88,6 +81,10 @@
     padding-top: 1em;
     padding-bottom: 1em;
     border: 2px solid black;
+   }
+
+   #linkHome{
+    color: white;
    }
 
    .boton_enviar{
@@ -118,24 +115,20 @@
         <p id="bienvenida">Bienvenid@ {nombre_sesion} al Taller de Vehiculos SuperStar</p>
         <br/>
         <div class="clear"></div> 
-        <form id="MenuPrincipal" action="index.php?control=login&actividad=login" method="POST">
-        <input type="button" id="Perfiles" value="PERFILES USUARIO"/>
-        <input type="button" id="usuario" value="EMPLEADOS"/>
-        <input type="button" id="vehiculo" value="VEHICULO"/>
-        <input type="button" id="inventario" value="INVENTARIO"/>
-        <input type="button" id="ubicacion" value="UBICACION"/> 
-        </form>   
+        <div id="home">
+        <a id="linkHome" href="index.php?control=login&actividad=login">HOME</a> 
+        </div>  
     </header>
       <div>
         <div>
           <section>
             <div>
-              <form id="listarVehiculo" action="index.php?control=vehiculo&actividad=listar" method="POST">
                 <h2>BUSCAR VEHICULO</h2>
                 <strong>
                   NOTA: Proporciona el VIN del vehiculo a buscar
                 </strong>
                 <br/>
+              <form id="listarVehiculo" action="index.php?control=vehiculo&actividad=listar" method="POST">
                 <label for="vin">VIN</label> 
                 <input type="text" id="vin" name="vin"/>
                 <br/>
@@ -153,8 +146,10 @@
                 <br/>
                 <input class="boton_enviar" type="submit" value="Buscar"/>
                 <br/>
-                <br/>
               </form>
+              <section id="listarTVehiculos">
+                <a href="index.php?control=vehiculo&actividad=listar">LISTAR TODOS LOS VEHICULOS</a>
+              </section>  
             </div>
           </section>
         </div>

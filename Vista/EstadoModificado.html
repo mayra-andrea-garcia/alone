@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <style type="text/css">
+ <style type="text/css">
 
    header{ 
     position: absolute;
@@ -59,7 +59,7 @@
     position: absolute;
     float: left;
     padding-right: 10em;
-    padding-bottom: 10em;
+    padding-bottom: 5em;
     padding-top: 1em;
    }
 
@@ -73,6 +73,14 @@
     float:left;
    }
 
+   h2{
+    position: absolute;
+    padding-top: 13em;
+    padding-left: 23em;
+    padding-right: 23em;
+    padding-bottom: 7em;
+    background-color: #BDB76B;
+   }
    #home{
     padding-left: 6em;
     padding-right: 6em;
@@ -87,21 +95,11 @@
    #linkHome{
     color: white;
    }
-
-   #aviso
-   {
-   	padding-top: 5em;
-   	padding-left: 5em;
-    padding-right: 1em;
-    padding-bottom: 2em;
-    background-color: #BDB76B;
-    font-size: 40pt;
-   }
-
   </style>
   <body>
-    <header id="logo_cabecera">
-     <h1>TallerSuperStar</h1>
+    <div>
+ <header id="logo_cabecera">
+      <h1>TallerSuperStar</h1>
         <div id="opciones_cabecera">
               <ul id="opciones_cuenta">
                 <li>
@@ -111,22 +109,28 @@
               </ul>
             </li>
         </div>
-        <p id="bienvenida">Bienvenid@ {nombre_sesion} al Taller de Vehiculos SuperStar</p>
+        <p id="bienvenida">Bienvenido al Taller de Vehiculos SuperStar</p>
         <br/>
         <div class="clear"></div> 
         <div id="home">
         <a id="linkHome" href="index.php?control=login&actividad=login">HOME</a> 
-        </div>   
+        </div>  
     </header>
-    <section id="aviso">
-    	<span>El Resgistro de tu usuario fue Exitoso!! intenta Loguearte con el link que llegue a tu correo</span>
-    </section>
-			<footer class="footer">
-				<div id="pie_pagina">
-					<hr>
-					<p id="copyright">© ALONE 2014</p>
-				</div>
-			</footer>	
-		</div>
-	</body>
-</html>	
+      <div>
+        <div>
+          <section>
+            <div>
+                <h2>MAIL ENVIADO!!</h2>
+            </div>
+          </section>
+        </div>
+      </div>
+      <footer class="footer">
+        <div id="pie_pagina">
+          <hr>
+          <p id="copyright">© ALONE 2014</p>
+        </div>
+      </footer> 
+    </div>
+  </body>
+</html> 

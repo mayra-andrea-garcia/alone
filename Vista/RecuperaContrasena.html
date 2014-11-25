@@ -4,8 +4,9 @@
     <title>TallerSuperStar</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="">
   </head>
-  <style type="text/css">
+ <style type="text/css">
 
    header{ 
     position: absolute;
@@ -73,6 +74,22 @@
     float:left;
    }
 
+   img {
+    position: absolute;
+    float: right;
+   }
+
+   .boton_enviar{
+    font-size: 12pt;
+   }
+
+   #agregarInventario{ 
+    padding-top: 10em;
+    padding-left: 35em;
+    padding-right: 15em;
+    padding-bottom: 5em;
+    background-color: #BDB76B;
+   }
    #home{
     padding-left: 6em;
     padding-right: 6em;
@@ -87,46 +104,49 @@
    #linkHome{
     color: white;
    }
-
-   #aviso
-   {
-   	padding-top: 5em;
-   	padding-left: 5em;
-    padding-right: 1em;
-    padding-bottom: 2em;
-    background-color: #BDB76B;
-    font-size: 40pt;
-   }
-
   </style>
   <body>
+    <div>
     <header id="logo_cabecera">
-     <h1>TallerSuperStar</h1>
-        <div id="opciones_cabecera">
-              <ul id="opciones_cuenta">
+      <h1>TallerSuperStar</h1>
+        <div  id="opciones_cabecera">
+              <ul  id="opciones_cuenta">
                 <li>
-                  <a href="index.php?control=login&actividad=modificar">Cambiar Constraseña</a>
+                  <a hidden="true" href="index.php?control=login&actividad=modificar">Cambiar Constraseña</a>
                 </li>
-                <li><a href="index.php?control=login&actividad=logout">Logout</a></li>
+                <li><a hidden="true" href="index.php?control=login&actividad=logout">Logout</a></li>
               </ul>
             </li>
         </div>
-        <p id="bienvenida">Bienvenid@ {nombre_sesion} al Taller de Vehiculos SuperStar</p>
+        <p id="bienvenida">Bienvenid@ al Taller de Vehiculos SuperStar</p>
         <br/>
         <div class="clear"></div> 
         <div id="home">
         <a id="linkHome" href="index.php?control=login&actividad=login">HOME</a> 
-        </div>   
+        </div> 
     </header>
-    <section id="aviso">
-    	<span>El Resgistro de tu usuario fue Exitoso!! intenta Loguearte con el link que llegue a tu correo</span>
-    </section>
-			<footer class="footer">
-				<div id="pie_pagina">
-					<hr>
-					<p id="copyright">© ALONE 2014</p>
-				</div>
-			</footer>	
-		</div>
-	</body>
-</html>	
+      <div>
+        <div>
+          <section>
+            <div>
+              <form id="agregarInventario" action="index.php?control=login&actividad=recuperarContrasena" method="POST">
+                <h2>Para recuperar tu contraseña, proporciona tu nombre de usuario</h2>
+                <br/>
+                <label for="nombreUsuario">Nombre de Usuario</label>
+                <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="nombre Usuario" required/>
+                <br/>
+                <input class="boton_enviar" type="submit" value="Recuperar"/>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+      <footer class="footer">
+        <div id="pie_pagina">
+          <hr>
+          <p id="copyright">© ALONE 2014</p>
+        </div>
+      </footer> 
+    </div>
+  </body>
+</html> 

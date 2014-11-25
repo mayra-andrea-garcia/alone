@@ -30,9 +30,19 @@ class ControladorLogin
   	function run()
 	{
 			switch ($_GET['actividad']) {
-				case 'login':
-					$this->iniciarSesion();
-					break;
+				case 'login':if(!ValidadorSesion::estaLogueado())
+							{
+
+								$this->iniciarSesion();
+							}
+							else
+							{
+								require_once('Vista/Login.html');
+								/*$vista = file_get_contents('Vista/index.html');
+							 	$vista =str_replace( "{nombre_sesion}", $_SESSION['usuario']/*$this->diccionario['{nombre_sesion}'], $vista);
+							 	echo $vista;*/
+							}
+							break;
 				case 'logout':
 					if(ValidadorSesion::estaLogueado())
 					{
@@ -44,9 +54,7 @@ class ControladorLogin
 						}
 						else
 						{
-							$vista = file_get_contents('Vista/Permisos.html');
-							$vista =str_replace( "{permisos}", $_SESSION['permisos'], $vista);
-							echo $vista;
+							require_once('Vista/Login.html');
 						}
 					}
 					else
@@ -159,6 +167,20 @@ class ControladorLogin
 						require_once('Vista/Login.html');
 					}	
 					break;
+				case 'recupera':
+					
+						require_once('Vista/RecuperaContrasena.html');
+					
+					break;	
+				case 'recuperarContrasena': 
+					if(!ValidadorSesion::estaLogueado())
+					{
+							$this->recuperaContrasena();
+					}
+					else
+					{
+						require_once('Vista/Login.html');
+					}	
 				default:
 					echo 'Error: Esa Actividad no existe';
 					break;
@@ -204,12 +226,78 @@ class ControladorLogin
 		$result = ValidadorSesion::logout();
 		require_once('Vista/Login.html');
 	}
+
+	/**
+		*Se recupera la contraseña de un usuario
+		*@param No recibe
+		*@return No contiene
+		*@throws No se generan excepciones
+		*/
+
+	function recuperaContrasena()
+	{
+		$nombreUsuario = SanitizadorDatos::validaTexto($_POST['nombreUsuario']); 
+
+		$result = $this->modelo->listaUsuario($nombreUsuario); 
+
+		if (isset($result)) 
+		{
+			$band = $this->enviarCorreo($nombreUsuario, $mail, 'recupera', $result['contrasena']);
+			if($band)
+			{
+				require_once('Vista/ContrasenaRecuperada.html');
+			}	
+			else
+			{
+				require_once('Vista/MailNoConcuerda.html');
+			}
+		}
+		else
+		{
+			require_once('Vista/MailNoConcuerda.html');
+		}	
+	}
 	/**
 		*Se cierra la sesion actual
 		*@return No tiene valor de retorno
 		*@param No recibe
 		*@throws No se generan excepciones
 		*/
+	function enviarCorreo($mail, $nombreUsuario, $op, $contrasena)
+	{
+		switch($op)
+		{							
+			case 'registra': 	$titulo    = 'BIENVENIDO AL TALLER DE VEHICULOS SUPERSTAR';
+								$mensaje   = "Hola $nombreUsuario <br/> <br/>".
+									            "Te has registrado en el taller de vehiculos <br/>".
+									            "Intenta loguearte en la siguiente pagina: <br/>".
+									            "<a href= 'http://alone-mayra.comli.com/TallerVehiculos/index.php/?control=login&actividad=login'> INICIA SESION AQUI </a>".
+									            "<br/> <br/> Saludos";
+								$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+								$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+								$cabeceras .= "To: $mail" . "\r\n";
+								$cabeceras .= 'From: mayra.garcia@alone-mayra.comli.com' . "\r\n";
+
+								$band = mail($para, $titulo, $message, $cabeceras); 
+							    return $band;
+							    break;
+			case 'recupera': 	$titulo    = 'RECUPERACION DE CONTRASEÑA DE TALLER DE VEHICULOS SUPERSTAR';
+								$mensaje   = "Hola $nombreUsuario <br/> <br/>".
+									            "Has solicitado un cambio de contraseña <br/>".
+									            "Tu contraseña es: $contrasena pruebala porfavor aqui:<br/>".
+									            "<a href= 'http://alone-mayra.comli.com/TallerVehiculos/index.php/?control=login&actividad=login'> INICIA SESION AQUI </a>".
+									            "<br/> <br/> Saludos";
+								$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+								$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+								$cabeceras .= "To: $mail" . "\r\n";
+								$cabeceras .= 'From: mayra.garcia@alone-mayra.comli.com' . "\r\n";
+
+								$band = mail($para, $titulo, $message, $cabeceras); 
+							    return $band;
+							    break;
+			default: echo 'Esa actividad no existe';
+	 	}
+	}
 
 	function registrar()
 	{
@@ -231,8 +319,8 @@ class ControladorLogin
 			$result = $this->modelo->registrar($nombreUsuario, $contrasena, $nombre, 
 				                               $apellidos, $mail, $permisos);
 			if(isset($result))
-			{
-				$envioExitoso = $this->mail->enviarCorreo($mail, $nombreUsuario, $_SESSION['usuario']);
+			{	//$envioExitoso = $this->mail->enviarCorreo($mail, $nombreUsuario, $_SESSION['usuario']);
+				$envioExitoso=$this->enviarCorreo($mail,$nombreUsuario,'registra', null);
 				if($envioExitoso)
 				{
 					require_once('Vista/RegistroExitoso.html');
